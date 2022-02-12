@@ -1,0 +1,1043 @@
+<!doctype html>
+<html xmlns:xi="http://www.w3.org/2001/XInclude">
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <title>DO280: Red Hat OpenShift Administration II: Operating a Production Kubernetes Cluster</title>
+      <link rel="stylesheet" href="css/reveal.css"/>
+      <link rel="stylesheet" href="css/theme/redhat.css" id="theme"/>
+      <!--Theme used for syntax highlighting of code-->
+      <link rel="stylesheet" href="lib/css/zenburn.css"/>
+      <!--Printing and PDF exports-->
+      <script>
+                    var link = document.createElement( 'link' );
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                    document.getElementsByTagName( 'head' )[0].appendChild( link );
+                </script>
+   </head>
+   <body>
+      <div class="reveal">
+         <div class="slides">
+            <section data-state="white"
+                     data-background-image="css/images/RH_Title_Background.png">
+               <img src="css/images/redhat-logo-white.svg" class="title-logo"/>
+               <h2 class="course-title">Red Hat OpenShift Administration II: Operating a Production Kubernetes Cluster</h2>
+               <p class="title-color">DO280</p>
+            </section>
+            <section data-state="black">
+               <h2>Welcome</h2>
+            </section>
+            <section data-state="black">
+               <h2>Course Objectives and Structure</h2>
+            </section>
+            <section data-state="black">
+               <h2>Schedule</h2>
+               <table class="schedule_table">
+                  <tr class="table_header" style="background-color: #D9EBF1;">
+                     <td>
+                        <strong>Day 1</strong>
+                     </td>
+                     <td>
+                        <strong>Day 2</strong>
+                     </td>
+                     <td>
+                        <strong>Day 3</strong>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Introduction</td>
+                     <td>Configuring Application Security  (continued)</td>
+                     <td>Controlling Pod Scheduling  (continued)</td>
+                  </tr>
+                  <tr>
+                     <td>Describing the Red Hat OpenShift Container Platform</td>
+                     <td>Configuring OpenShift Networking for Applications</td>
+                     <td>Describing Cluster Updates</td>
+                  </tr>
+                  <tr>
+                     <td>Verifying the Health of a Cluster</td>
+                     <td>Controlling Pod Scheduling  (started)</td>
+                     <td>Managing a Cluster with the Web Console</td>
+                  </tr>
+                  <tr>
+                     <td>Configuring Authentication and Authorization</td>
+                     <td/>
+                     <td>Comprehensive Review</td>
+                  </tr>
+                  <tr>
+                     <td>Configuring Application Security  (started)</td>
+                     <td/>
+                     <td/>
+                  </tr>
+               </table>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Orientation to the Classroom Environment</h2>
+               </section>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 1: Describing the Red Hat OpenShift Container Platform</h1>
+               <p class="goal_title">Goal: Describe the architecture of OpenShift Container Platform.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe the typical usage of the product and its features.</p>
+                  </li>
+                  <li>
+                     <p>Describe the architecture of Red Hat OpenShift Container Platform.</p>
+                  </li>
+                  <li>
+                     <p>Describe what a cluster operator is, how it works, and name the major cluster operators.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing OpenShift Container Platform Features</h2>
+               </section>
+               <section>
+                  <h3>Introducing OpenShift Container Platform</h3>
+               </section>
+               <section>
+                  <img src="images/architecture/arch-features-openshift.svg"/>
+                  <p>OpenShift services and features</p>
+               </section>
+               <section>
+                  <h3>Introducing OpenShift Features</h3>
+               </section>
+               <section>
+                  <img src="images/architecture/architecture-openshift-kubernetes-engine.svg"/>
+                  <p>Feature comparison between OpenShift Container Platform and OpenShift Kubernetes Engine</p>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing OpenShift Container Platform Features</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing the Architecture of OpenShift</h2>
+               </section>
+               <section>
+                  <h3>Introducing the Declarative Architecture of Kubernetes</h3>
+               </section>
+               <section>
+                  <h3>Introducing the OpenShift Control Plane</h3>
+               </section>
+               <section>
+                  <img src="images/architecture/control-plane.svg"/>
+                  <p>Architecture of an OpenShift control plane node</p>
+               </section>
+               <section>
+                  <h3>Describing OpenShift Extensions</h3>
+               </section>
+               <section>
+                  <h3>Introducing the OpenShift Default Storage Class</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing the Architecture of OpenShift</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing Cluster Operators</h2>
+               </section>
+               <section>
+                  <h3>Introducing Kubernetes Operators</h3>
+               </section>
+               <section>
+                  <h3>Introducing the Operator Framework</h3>
+               </section>
+               <section>
+                  <h3>Introducing Red Hat Marketplace</h3>
+               </section>
+               <section>
+                  <h3>Introducing OpenShift Cluster Operators</h3>
+               </section>
+               <section>
+                  <h3>Exploring OpenShift Cluster Operators</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing Cluster Operators</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Red Hat OpenShift Container Platform is based on Red Hat Enterprise Linux CoreOS, the CRI-O container engine, and Kubernetes.</li>
+                  <li>RHOCP 4 provides services on top of Kubernetes, such as an internal container image registry, storage, networking providers, and centralized logging and monitoring.</li>
+                  <li>Operators package applications that manage Kubernetes resources, and the Operator Lifecycle Manager (OLM) handles installation and management of operators.</li>
+                  <li>OperatorHub.io is an online catalog for discovering operators.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 2: Verifying the Health of a Cluster</h1>
+               <p class="goal_title">Goal: Describe OpenShift installation methods and verify the health of a newly installed cluster.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe the OpenShift installation process, full-stack automation, and pre-existing infrastructure installation methods.</p>
+                  </li>
+                  <li>
+                     <p>Execute commands that assist in troubleshooting, verify that the OpenShift nodes are healthy, and troubleshoot common issues with OpenShift and Kubernetes deployments.</p>
+                  </li>
+                  <li>
+                     <p>Identify the components and resources of persistent storage and deploy an application that uses a persistent volume claim.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing Installation Methods</h2>
+               </section>
+               <section>
+                  <h3>Introducing OpenShift Installation Methods</h3>
+               </section>
+               <section>
+                  <h3>Comparing OpenShift Installation Methods</h3>
+               </section>
+               <section>
+                  <h3>Describing the Deployment Process</h3>
+               </section>
+               <section>
+                  <h3>Customizing an OpenShift Installation</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing Installation Methods</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Troubleshooting OpenShift Clusters and Applications</h2>
+               </section>
+               <section>
+                  <h3>Troubleshooting Common Issues with an OpenShift Cluster</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting Application Deployments</h3>
+               </section>
+               <section>
+                  <h3>Troubleshooting OpenShift CLI Commands</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Troubleshooting OpenShift Clusters and Applications</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Introducing OpenShift Dynamic Storage</h2>
+               </section>
+               <section>
+                  <h3>Persistent Storage Overview</h3>
+               </section>
+               <section>
+                  <h3>Persistent Volume and Persistent Volume Claim Life Cycle</h3>
+               </section>
+               <section>
+                  <h3>Verifying the Dynamic Provisioned Storage</h3>
+               </section>
+               <section>
+                  <h3>Deploying Dynamically Provisioned Storage</h3>
+               </section>
+               <section>
+                  <h3>Deleting Persistent Volume Claims</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Introducing OpenShift Dynamic Storage</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Red Hat OpenShift Container Platform provides two main installation methods: full-stack automation, and pre-existing infrastructure.</li>
+                  <li>Future releases are expected to add more cloud and virtualization providers, such as VMware, Red Hat Virtualization, and IBM System Z.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>An OpenShift node based on Red Hat Enterprise Linux CoreOS runs very few local services that would require direct access to a node to inspect their status. Most of the system services run as containers, the main exceptions are the CRI-O container engine and the Kubelet.</li>
+                  <li>The <code>oc get node</code>, <code>oc adm top</code>, <code>oc adm node-logs</code>, and <code>oc debug</code> commands provide troubleshooting information about OpenShift nodes.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 3: Configuring Authentication and Authorization</h1>
+               <p class="goal_title">Goal: Configure authentication with the HTPasswd identity provider and assign roles to users and groups.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Configure the HTPasswd identity provider for OpenShift authentication.</p>
+                  </li>
+                  <li>
+                     <p>Define role-based access controls and apply permissions to users.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring Identity Providers</h2>
+               </section>
+               <section>
+                  <h3>Describing OpenShift Users and Groups</h3>
+               </section>
+               <section>
+                  <h3>Authenticating API Requests</h3>
+               </section>
+               <section>
+                  <h3>Authenticating as a Cluster Administrator</h3>
+               </section>
+               <section>
+                  <h3>Configuring the HTPasswd Identity Provider</h3>
+               </section>
+               <section>
+                  <h3>Managing Users with the HTPasswd Identity Provider</h3>
+               </section>
+               <section>
+                  <h3>Deleting Users and Identities</h3>
+               </section>
+               <section>
+                  <h3>Assigning Administrative Privileges</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Identity Providers</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Defining and Applying Permissions using RBAC</h2>
+               </section>
+               <section>
+                  <h3>Role-based Access Control (RBAC)</h3>
+               </section>
+               <section>
+                  <h3>Authorization Process</h3>
+               </section>
+               <section>
+                  <h3>RBAC Scope</h3>
+               </section>
+               <section>
+                  <h3>Managing RBAC Using the CLI</h3>
+               </section>
+               <section>
+                  <h3>Default Roles</h3>
+               </section>
+               <section>
+                  <h3>User Types</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Defining and Applying Permissions using RBAC</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Verifying the Health of a Cluster</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>A newly-installed OpenShift cluster provides two authentication methods that grant administrative access: the <code>kubeconfig</code> file and the <code>kubeadmin</code> virtual user.</li>
+                  <li>The HTPasswd identity provider authenticates users against credentials stored in a secret. The name of the secret, and other settings for the identity provider, are stored inside the OAuth custom resource.</li>
+                  <li>To manage user credentials using the HTPasswd identity provider, you must extract data from the secret, change that data using the <code>htpasswd</code> command, and then apply the data back to the secret.</li>
+                  <li>Creating OpenShift users requires valid credentials, managed by an identity provider, plus user and identity resources.</li>
+                  <li>Deleting OpenShift users requires deleting their credentials from the identity provider, and also deleting their user and identity resources.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>OpenShift uses role-based access control (RBAC) to control user actions. A role is a collection of rules that govern interaction with OpenShift resources. Default roles exist for cluster administrators, developers, and auditors.</li>
+                  <li>To control user interaction, assign a user to one or more roles. A role binding contains all of the associations of a role to users and groups.</li>
+                  <li>To grant a user cluster administrator privileges, assign the <code>cluster-admin</code> role to that user.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 4: Configuring Application Security</h1>
+               <p class="goal_title">Goal: Restrict permissions of applications using security context constraints and protect access credentials using secrets.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Create and apply secrets to manage sensitive information and share secrets between applications.</p>
+                  </li>
+                  <li>
+                     <p>Create service accounts and apply permissions, and manage security context constraints.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Managing Sensitive Information with Secrets</h2>
+               </section>
+               <section>
+                  <h3>Secrets Overview</h3>
+               </section>
+               <section>
+                  <h3>Use Cases for Secrets</h3>
+               </section>
+               <section>
+                  <h3>Creating a Secret</h3>
+               </section>
+               <section>
+                  <h3>Exposing Secrets to Pods</h3>
+               </section>
+               <section>
+                  <h3>Configuration Map Overview</h3>
+               </section>
+               <section>
+                  <h3>Updating Secrets and Configuration Maps</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Managing Sensitive Information with Secrets</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Controlling Application Permissions with Security Context Constraints</h2>
+               </section>
+               <section>
+                  <h3>Security Context Constraints (SCCs)</h3>
+               </section>
+               <section>
+                  <h3>Privileged Containers</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Controlling Application Permissions with Security Context Constraints</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring Application Security</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>Secret resources allow you to separate sensitive information from application pods. You expose secrets to an application pod either as environment variables or as ordinary files.</li>
+                  <li>OpenShift uses security context constraints (SCCs) to define allowed pod interactions with system resources. By default, pods operate under the <code>restricted</code> context which limits access to node resources.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 5: Configuring OpenShift Networking for Applications</h1>
+               <p class="goal_title">Goal: Troubleshoot OpenShift software-defined networking (SDN) and configure network policies.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Troubleshoot OpenShift software-defined networking using the command-line interface.</p>
+                  </li>
+                  <li>
+                     <p>Allow and protect network connections to applications inside an OpenShift cluster.</p>
+                  </li>
+                  <li>
+                     <p>Restrict network traffic between projects and pods.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Troubleshooting OpenShift Software-defined Networking</h2>
+               </section>
+               <section>
+                  <h3>Introducing OpenShift Software-defined Networking</h3>
+               </section>
+               <section>
+                  <img src="images/network/network-sdn-pod-network.svg"/>
+                  <p>Kubernetes basic networking</p>
+               </section>
+               <section>
+                  <h3>Using Services for Accessing Pods</h3>
+               </section>
+               <section>
+                  <img src="images/network/network-sdn-service-network.svg"/>
+                  <p>Using services for accessing applications</p>
+               </section>
+               <section>
+                  <h3>Discussing the DNS Operator</h3>
+               </section>
+               <section>
+                  <h3>Introducing the Cluster Network Operator</h3>
+               </section>
+               <section>
+                  <h3>Introducing Multus CNI</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Troubleshooting OpenShift Software-defined Networking</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Exposing Applications for External Access</h2>
+               </section>
+               <section>
+                  <h3>Accessing Application from External Networks</h3>
+               </section>
+               <section>
+                  <img src="images/network/network-sdn-routes-network.svg"/>
+                  <p>Using routes to expose applications</p>
+               </section>
+               <section>
+                  <h3>Describing Methods for Managing Ingress Traffic</h3>
+               </section>
+               <section>
+                  <h3>Creating Routes</h3>
+               </section>
+               <section>
+                  <h3>Securing Routes</h3>
+               </section>
+               <section>
+                  <img src="images/network/network-sdn-routes-edge.svg"/>
+                  <p>Securing applications with edge routes</p>
+               </section>
+               <section>
+                  <img src="images/network/network-sdn-routes-passthrough.svg"/>
+                  <p>Securing applications with passthrough routes</p>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Exposing Applications for External Access</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Configuring Network Policies</h2>
+               </section>
+               <section>
+                  <h3>Managing Network Policies in OpenShift</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Configuring Network Policies</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configuring OpenShift Networking for Applications</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>OpenShift implements a software-defined networking (SDN) to manage the network infrastructure of the cluster. SDN decouples the software that handles the traffic from the underlying mechanisms that route the traffic.</li>
+                  <li>Kubernetes provides services that allow the logical grouping of pods under a common access route. Services act as load balancers in front of one or more pods.</li>
+                  <li>Services use selectors (labels) that indicate which pods available to the service.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>There are two kind of routes: secure, and insecure. Secure routes encrypt the traffic using TLS certificates, and insecure routes forward traffic over an unencrypted connection. Secure routes support three modes: edge, passthrough, and re-encryption.</li>
+                  <li>Network policies control network traffic to pods. Logical zones can be created in the SDN to segregate traffic among pods in any namespace.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 6: Controlling Pod Scheduling</h1>
+               <p class="goal_title">Goal: Control the nodes on which a pod runs.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe pod scheduling algorithms, the methods used to influence scheduling, and apply these methods.</p>
+                  </li>
+                  <li>
+                     <p>Limit the resources consumed by containers, pods, and projects.</p>
+                  </li>
+                  <li>
+                     <p>Control the number of replicas of a pod, specify the number of replicas in a deployment, manually scale the number of replicas, and createa horizontal pod autoscaler (HPA) resource.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Controlling Pod Scheduling Behavior</h2>
+               </section>
+               <section>
+                  <h3>Introducing the OpenShift Scheduler Algorithm</h3>
+               </section>
+               <section>
+                  <h3>Scheduling and Topology</h3>
+               </section>
+               <section>
+                  <img src="images/schedule/regions-and-zones.svg"/>
+                  <p>Sample cluster topology using regions and zones</p>
+               </section>
+               <section>
+                  <h3>Labeling Nodes</h3>
+               </section>
+               <section>
+                  <h3>Labeling Machine Sets</h3>
+               </section>
+               <section>
+                  <h3>Controlling Pod Placement</h3>
+               </section>
+               <section>
+                  <h3>Configuring a Node Selector for a Project</h3>
+               </section>
+               <section>
+                  <h3>Scaling the Number of Pod Replicas</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Controlling Pod Scheduling Behavior</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Limiting Resource Usage by an Application</h2>
+               </section>
+               <section>
+                  <h3>Defining Resource Requests and Limits for Pods</h3>
+               </section>
+               <section>
+                  <h3>Viewing Requests, Limits, and Actual Usage</h3>
+               </section>
+               <section>
+                  <h3>Applying Quotas</h3>
+               </section>
+               <section>
+                  <h3>Applying Limit Ranges</h3>
+               </section>
+               <section>
+                  <h3>Applying Quotas to Multiple Projects</h3>
+               </section>
+               <section>
+                  <h3>Customizing the Default Project Template</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Limiting Resource Usage by an Application</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Scaling an Application</h2>
+               </section>
+               <section>
+                  <h3>Specifying Pod Replicas in Configuration Workloads</h3>
+               </section>
+               <section>
+                  <h3>Manually Scaling the Number of Pod Replicas</h3>
+               </section>
+               <section>
+                  <h3>Autoscaling Pods</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Scaling an Application</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Controlling Pod Scheduling</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>The default pod scheduler uses regions and zones to achieve both performance and redundancy.</li>
+                  <li>Labeling nodes and using node selectors influences pod placement.</li>
+                  <li>Resource requests define the minimum amount of resources a pod needs in order to be scheduled.</li>
+                  <li>Quotas restrict the amount of resources a project is allowed to consume.</li>
+                  <li>A customized project template can automatically create quotas and limit ranges for new projects.</li>
+                  <li>The <code>oc scale</code> command manually scales the number of replicas of a pod.</li>
+                  <li>Horizontal pod autoscalers dynamically scale pod replicas based on load.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 7: Describing Cluster Updates</h1>
+               <p class="goal_title">Goal: Describe how to perform a cluster update.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Describe the cluster update process.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Describing the Cluster Update Process</h2>
+               </section>
+               <section>
+                  <h3>Introducing Cluster Updates</h3>
+               </section>
+               <section>
+                  <img src="images/update/updates-console.png"/>
+                  <p>Managing clusters at cloud.redhat.com</p>
+               </section>
+               <section>
+                  <h3>Describing the Candidate Channel</h3>
+               </section>
+               <section>
+                  <h3>Describing the Fast Channel</h3>
+               </section>
+               <section>
+                  <h3>Describing the Stable Channel</h3>
+               </section>
+               <section>
+                  <h3>Describing the Extended Update Support Channel</h3>
+               </section>
+               <section>
+                  <h3>Describing Upgrade Paths</h3>
+               </section>
+               <section>
+                  <img src="images/update/updates-paths-ocp.svg"/>
+                  <p>Update graphs for stable and candidate channels</p>
+               </section>
+               <section>
+                  <h3>Changing the Update Channel</h3>
+               </section>
+               <section>
+                  <img src="images/update/updates-channel.png"/>
+                  <p>Current update channel in the web console</p>
+               </section>
+               <section>
+                  <img src="images/update/updates-select-channel.png"/>
+                  <p>Changing the update channel in the web console</p>
+               </section>
+               <section>
+                  <h3>Describing OTA</h3>
+               </section>
+               <section>
+                  <img src="images/update/updates-backend.svg"/>
+                  <p>OpenShift Container Platform Updates Architecture</p>
+               </section>
+               <section>
+                  <img src="images/update/updates-telemetry-backend.svg"/>
+                  <p>Managing cluster updates using telemetry</p>
+               </section>
+               <section>
+                  <h3>Discussing the Update Process</h3>
+               </section>
+               <section>
+                  <h3>Updating the Cluster</h3>
+               </section>
+               <section>
+                  <img src="images/update/updates-web.png"/>
+                  <p>Updating the cluster using the web console</p>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="multchoice_title"> Quiz:</span>  Describing the Cluster Update Process</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>One of the major benefits of OpenShift 4 architectural changes is that you can update your clusters Over-the-Air (OTA).</li>
+                  <li>Red Hat provides a new software distribution system that ensures the best path for updating your cluster and the underlying operating system.</li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary (continued)</h2>
+               <ul class="summary_list">
+                  <li>There are several distribution channels:<ul class="summary_list">
+                        <li>The stable channel delivers delayed updates.</li>
+                        <li>The fast channel delivers updates are soon as they are available.</li>
+                        <li>The candidate channel delivers updates for testing feature acceptance in the next version of OpenShift Container Platform.</li>
+                        <li>The eus channel (only available when running 4.6) extends the maintenance phase for customers with Premium Subscriptions.</li>
+                     </ul>
+                  </li>
+                  <li>Red Hat does not support reverting your cluster to a previous version. Red Hat only supports upgrading to a newer version.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 8: Managing a Cluster with the Web Console</h1>
+               <p class="goal_title">Goal: Manage a Red Hat OpenShift cluster using the web console.</p>
+               <br/>
+               <p class="objective_list_title">Objectives:</p>
+               <ul class="objective_list">
+                  <li>
+                     <p>Perform cluster administration with the web console.</p>
+                  </li>
+                  <li>
+                     <p>Manage applications and Kubernetes Operators with the web console.</p>
+                  </li>
+                  <li>
+                     <p>Examine performance and health metrics for cluster nodes and applications.</p>
+                  </li>
+               </ul>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Performing Cluster Administration</h2>
+               </section>
+               <section>
+                  <h3>Describing the Web Console</h3>
+               </section>
+               <section>
+                  <h3>Accessing the OpenShift Web Console</h3>
+               </section>
+               <section>
+                  <h3>Finding Resources</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-admin-projects-filter-4.6a.png"/>
+               </section>
+               <section>
+                  <img src="images/console/console-admin-pod-states-4.6a.png"/>
+               </section>
+               <section>
+                  <h3>Creating Users and Groups</h3>
+               </section>
+               <section>
+                  <h3>Creating a Project</h3>
+               </section>
+               <section>
+                  <h3>Discussing Limitations</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Performing Cluster Administration</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Managing Workloads and Operators</h2>
+               </section>
+               <section>
+                  <h3>Exploring Workload Resources</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-workloads-pod-details.png"/>
+               </section>
+               <section>
+                  <h3>Managing Workloads</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-workloads-actions.png"/>
+                  <p>Using the Actions menu to modify a deployment.</p>
+               </section>
+               <section>
+                  <img src="images/console/console-workloads-yaml-editor.png"/>
+                  <p>Editing a resource using the embedded YAML editor.</p>
+               </section>
+               <section>
+                  <h3>Deploying Applications</h3>
+               </section>
+               <section>
+                  <h3>Installing and Using Operators</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-workloads-operator-details.png"/>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Managing Workloads and Operators</h2>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Examining Cluster Metrics</h2>
+               </section>
+               <section>
+                  <h3>Viewing Cluster Metrics</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-metrics-dash-utilization.png"/>
+               </section>
+               <section>
+                  <h3>Viewing Project Metrics</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-metrics-project-details.png"/>
+               </section>
+               <section>
+                  <h3>Viewing Resource Metrics</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-metrics-pod-details.png"/>
+                  <p>Time-series graphs showing various metrics for a pod.</p>
+               </section>
+               <section>
+                  <h3>Performing Prometheus Queries in the Web Console</h3>
+               </section>
+               <section>
+                  <img src="images/console/console-metrics-prometheus.png"/>
+                  <p>Using a Prometheus query to display a time-series graph.</p>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="checklist_title"> Guided Exercise:</span>  Examining Cluster Metrics</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Managing a Cluster with the Web Console</h2>
+            </section>
+            <section data-state="black">
+               <h2 class="summary-title">Summary</h2>
+               <ul class="summary_list">
+                  <li>The OpenShift web console provides a GUI for visualizing and managing OpenShift resources.</li>
+                  <li>Some resources feature a specialized page that makes creating and editing resources more convenient than writing YAML by hand, such as the Edit Key/Value Secret editor, which automatically handles Base64 encoding and decoding.</li>
+               </ul>
+               <ul class="summary_list">
+                  <li>You can install partner and community operators from the embedded OperatorHub page.</li>
+               </ul>
+               <ul class="summary_list">
+                  <li>Cluster-wide metrics such as CPU, memory, and storage usage are displayed on the Dashboards page.</li>
+                  <li>Project Details pages display metrics specific to the project, such as the top ten memory consumers by pod and the current resource quota usage.</li>
+               </ul>
+            </section>
+            <section data-state="white"
+                     data-background-image="css/images/RH_Chapter_Title_Background2.png">
+               <h1 class="course-title">Chapter 9: Comprehensive Review</h1>
+            </section>
+            <section data-state="black">
+               <section>
+                  <h2>Comprehensive Review</h2>
+               </section>
+               <section>
+                  <h3>Reviewing Red Hat OpenShift Administration II: Operating a Production Kubernetes Cluster</h3>
+               </section>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Troubleshoot an OpenShift Cluster and Applications</h2>
+            </section>
+            <section data-state="black">
+               <h2>
+                  <span class="lab_title"> Lab:</span>  Configure a Project Template with Resource and Network Restrictions</h2>
+            </section>
+         </div>
+         <div class="logo"> </div>
+      </div>
+      <div class="versionString">
+         <p>DO280-OCP4.6-en-1-20210723</p>
+      </div>
+      <div class="copyright">
+         <p>Copyright &copy;<script>
+                        document.write(new Date().getFullYear())
+                        
+                    </script> Red Hat, Inc.</p>
+      </div>
+      <script src="lib/js/head.min.js"> </script>
+      <script src="js/reveal.js"> </script>
+      <script>
+                    // More info about config & dependencies:
+                    // - https://github.com/hakimel/reveal.js#configuration
+                    // - https://github.com/hakimel/reveal.js#dependencies
+                    Reveal.initialize({
+                    history: true,
+                    slideNumber: 'h.v',
+                    dependencies: [{
+                    src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                    src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                    src: 'plugin/menu/menu.js'
+                    },
+                    {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                    },
+                    {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function() {
+                    hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    // Zoom in and out with Alt+click
+                    { src: 'plugin/zoom-js/zoom.js', async: true }
+                    ],
+                    menu: {
+                    side: 'left',
+                    themes: false,
+                    transitions: false,
+                    useTextContentForMissingTitles: true,
+                    }
+                    });
+                    
+                    Reveal.addEventListener('white', function () {
+                    var colorVaryingClasses = ['versionString', 'copyright', 'slide-number']
+                    for (var j = 0, k = colorVaryingClasses.length; j < k; j++) {
+                    // Called each time the slide with the "white" state is made visible
+                    var elements = document.getElementsByClassName(colorVaryingClasses[j]);
+                    for (var i = 0, l = elements.length; i < l; i++) {
+                    elements[i].style.color = "white";
+                    }
+                    }
+                    
+                    var state = Reveal.getState();
+                    
+                    var menu = document.querySelector('.slide-menu-button');
+                    
+                    if (menu) {
+                    menu.classList.add("white");
+                    menu.classList.remove("black");
+                    }
+                    
+                    var bottomLogo = document.querySelector('.logo');
+                    
+                    if (state.indexh == 0) {
+                    bottomLogo.style.display = "none";
+                    } else {
+                    bottomLogo.style.backgroundImage = "url('css/images/redhat-logo-white.svg')";
+                    }
+                    
+                    var buttonRight = document.querySelector('.navigate-right');
+                    buttonRight.style.borderLeftColor = "white";
+                    
+                    var buttonLeft = document.querySelector('.navigate-left');
+                    buttonLeft.style.borderRightColor = "white";
+                    
+                    });
+                    
+                    Reveal.addEventListener('black', function () {
+                    var colorVaryingClasses = ['versionString', 'copyright', 'slide-number']
+                    
+                    for (var j = 0, k = colorVaryingClasses.length; j < k; j++) {
+                    // Called each time the slide with the "white" state is made visible
+                    var elements = document.getElementsByClassName(colorVaryingClasses[j]);
+                    for (var i = 0, l = elements.length; i < l; i++) {
+                    elements[i].style.color = "black";
+                    }
+                    }
+                    
+                    var menu = document.querySelector('.slide-menu-button');
+                    
+                    if (menu) {
+                    menu.classList.add("black");
+                    menu.classList.remove("white");
+                    }
+                    
+                    var bottomLogo = document.querySelector('.logo');
+                    
+                    bottomLogo.style.display = "block";
+                    bottomLogo.style.backgroundImage = "url('css/images/redhat-logo.svg')";
+                    
+                    var buttonRight = document.querySelector('.navigate-right');
+                    buttonRight.style.borderLeftColor = "#CC0000";
+                    
+                    var buttonLeft = document.querySelector('.navigate-left');
+                    buttonLeft.style.borderRightColor = "#CC0000";
+                    
+                    });
+                    
+                </script>
+   </body>
+</html>
